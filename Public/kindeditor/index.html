@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>kind</title>
+</head>
+<body>
+	<h1>编辑器</h1>
+	<hr>
+	<form action="server.php" method='post'>
+		<textarea name="content" id="content" cols="30" rows="10" style="width:700px;height:300px"></textarea>
+
+		<button>提交</button>
+	</form>
+	<script charset="utf-8" src="kindeditor.js"></script>
+	<script charset="utf-8" src="lang/zh_CN.js"></script>
+	<script>
+	        KindEditor.ready(function(K) {
+	                window.editor = K.create('#content');
+	        });
+	</script>
+</body>
+</html>

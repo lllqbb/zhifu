@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>充值中心</title>
+    <!--要求页面自动适应浏览器的屏幕-->
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <link href="__PUBLIC__/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <table frame="void">
+            <tr>
+                <td>
+                    <img src="__PUBLIC__/images/log.png" width="" height="50" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal" role="form" action="<{:U('Jsapi/ls')}>"
+              method="post">
+
+            <div class="form-group">
+                <label for="money" class="col-sm-2 control-label">
+                    支付金额：
+                </label>
+                <div class="col-sm-10">
+                    <select name="money" id="money" class="form-control">
+                        <option value="0.01">0.01元</option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-info form-control">
+                        提交订单
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

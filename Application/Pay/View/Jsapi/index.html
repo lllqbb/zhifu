@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+	<!--要求页面自动适应浏览器的屏幕-->
+	<meta name="viewport"
+		  content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<link href="__PUBLIC__/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<table frame="void">
+			<tr>
+				<td>
+					<img src="__PUBLIC__/images/log.png" width="" height="50" />
+				</td>
+			</tr>
+		</table>
+	</div>
+<h3>请确认是否正确</h3>
+
+
+	<div>充值金额：<?php echo $money;?>元</div>
+	<br>
+
+	<div align="center">
+    <!--<button style="width:210px; height:50px; border-radius: 15px;background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:16px;" type="button" onclick="callpay()" >立即支付</button>-->
+	 <div class="form-group" style = "padding-top:50px;">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" class="btn btn-info form-control" onclick="callpay()">
+                        提交订单
+                    </button>
+                </div>
+            </div>
+</div>
+</div>
+<script type="text/javascript">
+        //调用微信JS api 支付
+        function jsApiCall()
+        {
+            WeixinJSBridge.invoke(
+                'getBrandWCPayRequest',
+                <?php echo $jsApiParameters; ?>,
+                function(res){
+                    WeixinJSBridge.log(res.err_msg);
+                    //alert(res.err_code+res.err_desc+res.err_msg);
+                    //alert("{$jsApiParameters}");
+                }
+            );
+        }
+        function callpay()
+        {
+            if (typeof WeixinJSBridge == "undefined"){
+                if( document.addEventListener ){
+                    document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+                }else if (document.attachEvent){
+                    document.attachEvent('WeixinJSBridgeReady', jsApiCall); 
+                    document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+                }
+            }else{
+                jsApiCall();
+            }
+        }
+    </script>
+</body>
+</html>
+
